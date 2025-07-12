@@ -19,7 +19,7 @@ class PostgreSQLTransport extends Transport {
     });
     // Save log to PostgreSQL
     pool.query(
-      `INSERT INTO ${this.tableName} (level, msg, meta) VALUES ($1, $2, $3)`,
+      `INSERT INTO ${this.tableName} (level, message, meta) VALUES ($1, $2, $3)`,
       [info.level, info.message, JSON.stringify(info)],
       (err) => {
         if (err) {
