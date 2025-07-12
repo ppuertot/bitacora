@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 const logger = require('./logger');
 
 logger.info('Servidor iniciado en el puerto 8080');
