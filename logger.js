@@ -1,6 +1,6 @@
 
 const winston = require('winston');
-const Transport = winston.Transport;
+const Transport = require('winston-transport');
 const { pool } = require('./connection');
 
 // Custom PostgreSQL Transport
