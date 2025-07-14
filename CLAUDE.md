@@ -8,10 +8,18 @@ This is a simple Node.js logging demonstration project ("bitácora" means logboo
 
 ## Commands
 
+### Local Development
 - **Install dependencies:** `npm install`
 - **Build TypeScript:** `npm run build`
 - **Run the demo (TypeScript):** `npm run dev`
 - **Run the demo (compiled JS):** `npm start`
+
+### Docker
+- **Build and run with Docker Compose:** `docker-compose up --build`
+- **Run in background:** `docker-compose up -d`
+- **Stop containers:** `docker-compose down`
+- **View logs:** `docker-compose logs app`
+- **Rebuild after code changes:** `docker-compose up --build`
 
 ## Code Architecture
 
@@ -60,3 +68,19 @@ CREATE TABLE winston_logs (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
+## Docker Setup
+
+The project includes Docker support for easy deployment and development:
+
+### Files
+- `Dockerfile`: Multi-stage build for the Node.js application with security best practices
+- `docker-compose.yml`: Orchestrates the app and PostgreSQL database services
+- `init.sql`: Initializes the PostgreSQL database schema on first run
+- `.dockerignore`: Excludes unnecessary files from Docker build context
+
+### Configuration
+- **PostgreSQL**: Runs on port 5432 with persistent data volume
+- **Application**: Connects to PostgreSQL automatically via Docker networking
+- **Logs**: File logs are persisted in `./logs` directory on host
+- **Environment**: Production environment variables configured for Docker
